@@ -15,13 +15,29 @@ const app = express();
 app.use(helmet());
 
 // CORS configuration
-const corsOptions = {
-  origin: process.env.NODE_ENV === 'production' 
-    ? process.env.CLIENT_URL 
-    : ['http://localhost:5173', 'http://localhost:3000'],
+// CORS configuration (supports Vercel preview + production)
+const allowedOrigins = [
+  process.env.CLIENT_URL, // production Vercel domain
+];
+
+app.use(cors({
+  origin: (origin, callback) => {
+    // allow requests with no origin (Postman, curl, server-to-server)
+    if (!origin) return callback(null, true);
+
+    // allow production domain + all Vercel preview domains
+    if (
+      allowedOrigins.includes(origin) ||
+      origin.endsWith('.vercel.app')
+    ) {
+      return callback(null, true);
+    }
+
+    return callback(new Error('Not allowed by CORS'));
+  },
   credentials: true,
-};
-app.use(cors(corsOptions));
+}));
+
 
 // Body parsing middleware
 app.use(express.json({ limit: '10mb' }));
