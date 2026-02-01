@@ -17,33 +17,37 @@ if (!fs.existsSync(dataDir)) {
   fs.mkdirSync(dataDir, { recursive: true });
 }
 
-// Start server ONLY after DB is ready
+// Test database connection and sync models
 sequelize
   .authenticate()
   .then(() => {
     console.log('✓ Database connection established successfully');
-    return sequelize.sync({ alter: false });
+    return sequelize.sync({ alter: false }); // Use alter: true only in development if needed
   })
   .then(() => {
     console.log('✓ Database models synchronized');
-
-    app.listen(PORT, '0.0.0.0', () => {
+    
+    // Start server
+    app.listen(PORT, () => {
       console.log(`✓ Server running on port ${PORT}`);
       console.log(`✓ Environment: ${process.env.NODE_ENV || 'development'}`);
+      console.log(`✓ API available at http://localhost:${PORT}`);
     });
   })
   .catch((err) => {
-    console.error('✗ Unable to start server');
-    console.error(err);
+    console.error('✗ Unable to start server:', err);
+    process.exit(1);
   });
 
 // Graceful shutdown
 process.on('SIGTERM', () => {
+  console.log('SIGTERM signal received: closing HTTP server');
   sequelize.close();
   process.exit(0);
 });
 
 process.on('SIGINT', () => {
+  console.log('SIGINT signal received: closing HTTP server');
   sequelize.close();
   process.exit(0);
 });
