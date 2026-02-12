@@ -105,7 +105,7 @@ server/
 ## 1️⃣ Clone repo
 
 ```
-git clone https://github.com/YOUR_USERNAME/intelli-csv.git
+git clone https://github.com/nayanpriyaa/Intelli-CSV.git
 cd intelli-csv
 ```
 
@@ -217,6 +217,7 @@ CSE Student | Full-Stack + AI Builder 🚀
 
 Give it a star on GitHub ⭐
 Helps a lot :)
+
 
 
 
