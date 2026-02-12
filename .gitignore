@@ -9,8 +9,8 @@ yarn.lock
 .env.production
 
 # Database
-server/data/*.sqlite
-server/data/*.sqlite-journal
+# server/data/*.sqlite
+# server/data/*.sqlite-journal
 
 # Uploads
 server/uploads/*
