@@ -77,7 +77,7 @@ Supports:
 
 ### AI Integration
 
-* Gemini API / Groq API
+* Groq API
 * CSV context prompt injection
 
 ---
@@ -219,5 +219,6 @@ CSE Student | Full-Stack + AI Builder 🚀
 
 Give it a star on GitHub ⭐
 Helps a lot :)
+
 
 
