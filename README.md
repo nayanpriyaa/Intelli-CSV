@@ -1,6 +1,4 @@
-Here’s a **clean, professional README.md** you can directly paste into your GitHub repo 👇
 
----
 
 # 📊 Intelli-CSV — AI Powered CSV Dashboard + Chatbot
 
@@ -219,6 +217,7 @@ CSE Student | Full-Stack + AI Builder 🚀
 
 Give it a star on GitHub ⭐
 Helps a lot :)
+
 
 
 
